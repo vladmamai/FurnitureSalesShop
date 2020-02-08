@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.FurnitureInStorage>
+
+@{
+    ViewData["Title"] = "Наявна кількість товару";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Товар на складі</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Index" class="btn btn-warning btn-block border-warning">Повернутись до загального списку</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Продовжити пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Ідентифікатор товару
+            </th>
+            <th>
+                Назва товару
+            </th>
+            <th>
+                Закупівельна ціна
+            </th>
+            <th>
+                Ціна на продаж
+            </th>
+            <th>
+                Кількість на складі
+            </th>
+            <th>
+                Місцезнаходження товару
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FurnitureId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalog.FurnitureName) (@Html.DisplayFor(modelItem => item.Catalog.Color))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WholesalePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityInStorage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Storage.StorageAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FurnitureId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.FurnitureId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.FurnitureId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureInStorage
+
+@{
+    ViewData["Title"] = "Наявна кількість товару";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Товар на складі</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FurnitureId" />
+            <div class="form-group">
+                <label asp-for="CatalogId" class="control-label">Назва товару</label>
+                <select asp-for="CatalogId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.CatalogId"></select>
+                <span asp-validation-for="CatalogId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StorageId" class="control-label">Місцезнаходження товару</label>
+                <select asp-for="StorageId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.StorageId"></select>
+                <span asp-validation-for="StorageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WholesalePrice" class="control-label">Закупівельна ціна</label>
+                <input asp-for="WholesalePrice" class="form-control" />
+                <span asp-validation-for="WholesalePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RetailPrice" class="control-label">Ціна на продаж</label>
+                <input asp-for="RetailPrice" class="form-control" />
+                <span asp-validation-for="RetailPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantityInStorage" class="control-label">Кількість на складі</label>
+                <input asp-for="QuantityInStorage" class="form-control" />
+                <span asp-validation-for="QuantityInStorage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    }
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    }
+    </script>
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.FurnitureInStorage>
+
+@{
+    ViewData["Title"] = "Каталог меблів";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Каталог меблів</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Назва товару
+            </th>
+            <th>
+                Закупівельна ціна (грн.)
+            </th>
+            <th>
+                Ціна на продаж (грн.)
+            </th>
+            <th>
+                Кількість на складі
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalog.FurnitureName) (@Html.DisplayFor(modelItem => item.Catalog.Color))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WholesalePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityInStorage)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

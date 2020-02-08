@@ -1,0 +1,29 @@
+﻿@model FurnitureShopApp.DAL.Models.Subtype
+
+@{
+    ViewData["Title"] = "Типи меблів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Пошук</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Search">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SubtypeId" class="control-label">Підтип меблів</label>
+                <select asp-for="SubtypeId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.SubtypeId">
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Підтвердити пошук" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+

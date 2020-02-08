@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.Delivery>
+
+@{
+    ViewData["Title"] = "Доставка товару";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<div class="container">
+     <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Доставка товару</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Create" class="btn btn-warning btn-block border-warning">Додати новий запис</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Номер накладної
+            </th>
+            <th>
+                Номер чеку
+            </th>
+            <th>
+                Адреса доставки
+            </th>
+            <th>
+                Дата відправлення
+            </th>
+            <th>
+                Дата прибуття
+            </th>
+            <th>
+                Ціна доставки (грн.)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check.CheckId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryPrice)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DeliveryId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.DeliveryId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.DeliveryId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

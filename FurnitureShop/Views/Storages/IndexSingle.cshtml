@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.Storage>
+
+@{
+    ViewData["Title"] = "Список складів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Список складів</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Index" class="btn btn-warning btn-block border-warning">Повернутись до загального списку</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Продовжити пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Ідентифікатор складу
+            </th>
+            <th>
+                Адрес складу
+            </th>
+            <th>
+                Адрес магазину
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StorageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StorageAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shop.ShopAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StorageId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.StorageId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.StorageId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

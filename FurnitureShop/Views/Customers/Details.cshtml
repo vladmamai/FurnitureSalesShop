@@ -1,0 +1,48 @@
+﻿@model FurnitureShopApp.DAL.Models.Customer
+
+@{
+    ViewData["Title"] = "Клієнти магазину";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Клієнт</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Ім'я
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustName)
+        </dd>
+        <dt class = "col-sm-2">
+            Прізвище
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustSurname)
+        </dd>
+        <dt class = "col-sm-2">
+            Пошта Email
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            Номер телефону
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustPhoneNum)
+        </dd>
+        <dt class = "col-sm-2">
+            Знижка на товар
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CustomerId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

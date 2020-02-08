@@ -1,0 +1,47 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureSale
+
+@{
+    ViewData["Title"] = "Рахунки клієнтів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Рахунок клієнта</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Клієнт</label>
+                <select asp-for="CustomerId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.CustomerId">
+                    <option selected value="NULL">(Порожнє поле)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label">Працівник</label>
+                <select asp-for="EmployeeId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.EmployeeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyingDate" class="control-label">Дата фіскальної операції</label>
+                <input asp-for="BuyingDate" class="form-control" />
+                <span asp-validation-for="BuyingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label">Загальна сума до сплати</label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати запис" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

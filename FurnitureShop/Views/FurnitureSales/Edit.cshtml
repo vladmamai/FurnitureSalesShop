@@ -1,0 +1,60 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureSale
+
+@{
+    ViewData["Title"] = "Рахунки клієнтів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Рахунок клієнта</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CheckId" />
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Клієнт</label>
+                <select asp-for="CustomerId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.CustomerId">
+                    <option selected value="NULL">(Порожнє поле)</option>
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label">Продавець - консультант</label>
+                <select asp-for="EmployeeId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.EmployeeId"></select>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyingDate" class="control-label">Дата фіскальної операції</label>
+                <input asp-for="BuyingDate" class="form-control" />
+                <span asp-validation-for="BuyingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label">Загальна сума до сплати</label>
+                <input asp-for="TotalPrice" class="form-control" asp-is-invariant="true" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    }
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    }
+    </script>
+}

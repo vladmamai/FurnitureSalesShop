@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.Subtype>
+
+@{
+    ViewData["Title"] = "Підтипи меблів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+ <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Підтипи меблів</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Create" class="btn btn-warning btn-block border-warning">Додати новий запис</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr class="d-flex">
+            <th class="col-3">
+                Ідентифікатор підтипу товару
+            </th>
+            <th class="col-3">
+                Назва
+            </th>
+            <th class="col-3">
+                Тип меблів
+            </th>
+            <th class="col-3"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="d-flex">
+            <td class="col-3">
+                @Html.DisplayFor(modelItem => item.SubtypeId)
+            </td>
+            <td class="col-3">
+                @Html.DisplayFor(modelItem => item.SubtypeName)
+            </td>
+            <td class="col-3">
+                @Html.DisplayFor(modelItem => item.Type.TypeName)
+            </td>
+            <td class="col-3">
+                <a asp-action="Edit" asp-route-id="@item.SubtypeId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.SubtypeId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.SubtypeId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

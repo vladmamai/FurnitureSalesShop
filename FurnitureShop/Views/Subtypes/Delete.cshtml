@@ -1,0 +1,31 @@
+﻿@model FurnitureShopApp.DAL.Models.Subtype
+
+@{
+    ViewData["Title"] = "Підтипи меблів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Ви справді хочете видалити цей запис?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Назва
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubtypeName)
+        </dd>
+        <dt class="col-sm-2">
+            Підтип меблів
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type.TypeName)
+        </dd>
+    </dl>
+    <input type="hidden" asp-for="SubtypeId" />
+
+    <form asp-action="Delete">
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index">Повернутись до списку</a>
+    </form>
+</div>

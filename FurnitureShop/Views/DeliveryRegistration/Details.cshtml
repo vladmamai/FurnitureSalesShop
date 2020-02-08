@@ -1,0 +1,47 @@
+﻿@model FurnitureShopApp.DAL.Models.Delivery
+
+@{
+    ViewData["Title"] = "Оформлення доставки товару";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<h1>Накладна щодо доставки товару</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Номер чеку товару
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CheckId)
+        </dd>
+        <dt class="col-sm-2">
+            Адреса доставки
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            Дата відправлення
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShippingDate)
+        </dd>
+        <dt class="col-sm-2">
+            Дата прибуття
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+        <dt class="col-sm-2">
+            Ціна доставки
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryPrice)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Create">Повернутись до оформлення накладної</a> |
+    <a asp-action="DeliveryConfirm">Завершити оформлення накладної</a>
+</div>

@@ -1,0 +1,29 @@
+﻿@model FurnitureShopApp.DAL.Models.Delivery
+
+@{
+    ViewData["Title"] = "Доставка товару";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<h1>Пошук</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Search">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ShippingDate" class="control-label">Дата відправлення</label>
+                <input asp-for="ShippingDate" class="form-control" />
+                <span asp-validation-for="ShippingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Підтвердити пошук" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+

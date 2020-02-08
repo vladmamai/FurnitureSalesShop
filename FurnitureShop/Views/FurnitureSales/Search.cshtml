@@ -1,0 +1,29 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureSale
+
+@{
+    ViewData["Title"] = "Рахунки клієнтів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Пошук</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Search">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BuyingDate" class="control-label">Дата фіскальної операції</label>
+                <input asp-for="BuyingDate" class="form-control" />
+                <span asp-validation-for="BuyingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Підтвердити пошук" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+

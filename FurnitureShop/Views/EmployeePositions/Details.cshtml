@@ -1,0 +1,30 @@
+﻿@model FurnitureShopApp.DAL.Models.EmployeePosition
+
+@{
+    ViewData["Title"] = "Посади працівників";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Посада працівника</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Назва посади
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PositionName)
+        </dd>
+        <dt class="col-sm-2">
+            Місячний оклад
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PositionId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

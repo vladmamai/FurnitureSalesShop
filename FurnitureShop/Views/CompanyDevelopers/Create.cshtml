@@ -1,0 +1,47 @@
+﻿@model FurnitureShopApp.DAL.Models.CompanyDeveloper
+
+@{
+    ViewData["Title"] = "Компанії - виробники";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Компанія - виробник</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ComName" class="control-label">Назва компанії</label>
+                <input asp-for="ComName" class="form-control" />
+                <span asp-validation-for="ComName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComAddress" class="control-label">Адреса</label>
+                <input asp-for="ComAddress" class="form-control" />
+                <span asp-validation-for="ComAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComEmail" class="control-label">Пошта</label>
+                <input asp-for="ComEmail" class="form-control" />
+                <span asp-validation-for="ComEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComPhoneNum" class="control-label">Номер телефону</label>
+                <input asp-for="ComPhoneNum" class="form-control" />
+                <span asp-validation-for="ComPhoneNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати запис" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,60 @@
+﻿@model FurnitureShopApp.DAL.Models.Furniture
+
+@{
+    ViewData["Title"] = "Каталог меблів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Меблі</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Назва
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FurnitureName)
+        </dd>
+        <dt class="col-sm-2">
+            Матеріал
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Material)
+        </dd>
+        <dt class="col-sm-2">
+            Колір
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class="col-sm-2">
+            Гарантія
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Guarantee)
+        </dd>
+        <dt class="col-sm-2">
+            Опис
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Компанія - виробник
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.ComName)
+        </dd>
+        <dt class="col-sm-2">
+            Підтип товару
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subtype.SubtypeName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CatalogId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

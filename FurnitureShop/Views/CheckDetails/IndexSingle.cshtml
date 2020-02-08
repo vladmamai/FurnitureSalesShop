@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.CheckDetails>
+
+@{
+    ViewData["Title"] = "Деталі рахунків клієнтів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Деталі рахунків клієнтів</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Index" class="btn btn-warning btn-block border-warning">Повернутись до загального списку</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Продовжити пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Номер чеку
+            </th>
+            <th>
+                Назва товару
+            </th>
+            <th>
+                Кількість
+            </th>
+            <th>
+                Ціна за одиницю товару
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check.CheckId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Furniture.Catalog.FurnitureName) (@Html.DisplayFor(modelItem => item.Furniture.Catalog.Color))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantitySelected)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Furniture.RetailPrice)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CheckDetailsId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.CheckDetailsId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.CheckDetailsId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

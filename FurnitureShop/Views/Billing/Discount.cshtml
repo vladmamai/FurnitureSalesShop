@@ -1,0 +1,30 @@
+﻿@model FurnitureShopApp.DAL.Models.Customer
+
+@{
+    ViewData["Title"] = "Оформлення замовлення";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<h1>Знижка на товар</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Discount">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Клієнт</label>
+                <select asp-for="CustomerId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.CustomerId"></select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Перейти до наступної операції" class="btn btn-success" />
+            </div>
+            <div class="form-group">
+                <a asp-action="Details">Повернутись до попередньої сторінки</a>
+            </div>
+        </form>
+    </div>
+</div>
+

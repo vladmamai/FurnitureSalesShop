@@ -1,0 +1,85 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.Furniture>
+
+@{
+    ViewData["Title"] = "Каталог меблів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Каталог меблів</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Index" class="btn btn-warning btn-block border-warning">Повернутись до загального списку</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Продовжити пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Номер товару
+            </th>
+            <th>
+                Назва
+            </th>
+            <th>
+                Матеріал
+            </th>
+            <th>
+                Колір
+            </th>
+            <th>
+                Гарантія
+            </th>
+            <th>
+                Опис
+            </th>
+            <th>
+                Компанія - виробник
+            </th>
+            <th>
+                Підтип товару
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatalogId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FurnitureName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guarantee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company.ComName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtype.SubtypeName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CatalogId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.CatalogId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.CatalogId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

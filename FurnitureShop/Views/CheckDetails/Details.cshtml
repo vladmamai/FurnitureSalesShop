@@ -1,0 +1,48 @@
+﻿@model FurnitureShopApp.DAL.Models.CheckDetails
+
+@{
+    ViewData["Title"] = "Деталі рахунків клієнтів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Деталі рахунку клієнта</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Номер чеку
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Check.CheckId)
+        </dd>
+        <dt class="col-sm-2">
+            Клієнт
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Check.Customer.CustFullName)
+        </dd>
+        <dt class="col-sm-2">
+            Ідентифікатор товару
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Furniture.FurnitureId)
+        </dd>
+        <dt class="col-sm-2">
+            Назва товару
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Furniture.Catalog.FurnitureName) (@Html.DisplayFor(model => model.Furniture.Catalog.Color))
+        </dd>
+        <dt class="col-sm-2">
+            Кількість одиниць
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.QuantitySelected)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CheckDetailsId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

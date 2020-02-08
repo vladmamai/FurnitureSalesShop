@@ -1,0 +1,51 @@
+﻿@model FurnitureShopApp.DAL.Models.Delivery
+
+@{
+    ViewData["Title"] = "Доставка товару";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Накладана на доставку товару</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CheckId" class="control-label">Номер чеку</label>
+                <select asp-for="CheckId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.CheckId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label">Адреса доставки</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingDate" class="control-label">Дата відправлення</label>
+                <input asp-for="ShippingDate" class="form-control" />
+                <span asp-validation-for="ShippingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryDate" class="control-label">Дата прибуття</label>
+                <input asp-for="DeliveryDate" class="form-control" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryPrice" class="control-label">Ціна доставки</label>
+                <input asp-for="DeliveryPrice" class="form-control" />
+                <span asp-validation-for="DeliveryPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати запис" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

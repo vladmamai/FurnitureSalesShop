@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.FurnitureShop>
+
+@{
+    ViewData["Title"] = "Перелік магазинів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+             <h1 class="float-left">Список магазинів</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Index" class="btn btn-warning btn-block border-warning">Повернутись до загального списку</a></p>
+            <p><a asp-action="Search" class="btn btn-outline-info btn-block border-info">Продовжити пошук</a></p>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Ідентифікатор магазину
+            </th>
+            <th>
+                Адреса магазину
+            </th>
+            <th>
+                Пошта Email
+            </th>
+            <th>
+                Номер телефону
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopPhoneNum)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShopId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                <a asp-action="Details" asp-route-id="@item.ShopId" class="btn btn-outline-info btn-block border-info">Деталі</a>
+                <a asp-action="Delete" asp-route-id="@item.ShopId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

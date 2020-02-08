@@ -1,0 +1,36 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureShop
+
+@{
+    ViewData["Title"] = "Перелік магазинів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Магазин меблів</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Адреса магазину
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShopAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Пошта Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShopEmail)
+        </dd>
+        <dt class="col-sm-2">
+            Номер телефону
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShopPhoneNum)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ShopId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

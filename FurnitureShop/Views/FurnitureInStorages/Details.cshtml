@@ -1,0 +1,48 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureInStorage
+
+@{
+    ViewData["Title"] = "Наявна кількість товару";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Товар на складі</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Назва товару
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Catalog.FurnitureName)
+        </dd>
+        <dt class="col-sm-2">
+            Закупівельна ціна
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WholesalePrice)
+        </dd>
+        <dt class="col-sm-2">
+            Ціна на продаж
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RetailPrice)
+        </dd>
+        <dt class="col-sm-2">
+            Кількість на складі
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.QuantityInStorage)
+        </dd>
+        <dt class="col-sm-2">
+            Місцезнаходження товару
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Storage.StorageAddress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FurnitureId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

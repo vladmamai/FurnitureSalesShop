@@ -1,0 +1,55 @@
+﻿@model FurnitureShopApp.DAL.Models.FurnitureSale
+
+@{
+    ViewData["Title"] = "Оформлення замовлення";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<h1>Інформація про рахунок клієнта</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Номер чеку
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CheckId)
+        </dd>
+    </dl>
+    <hr/>
+    <dl class="row">
+         @foreach (var item in Model.CheckDetails)
+         {
+             <dt class="col-sm-2">
+                 
+             </dt>
+             <dd class="col-sm-10">
+                 @Html.DisplayFor(modelItem => item.Furniture.Catalog.FurnitureName) (@Html.DisplayFor(modelItem => item.QuantitySelected) X @Html.DisplayFor(modelItem => item.Furniture.RetailPrice))
+             </dd>   
+         }
+    </dl>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Загальна сума до сплати
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalPrice) грн.
+        </dd>
+        <dt class="col-sm-2">
+            Продавець - консультант
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.EmpFullName)
+        </dd>
+        <dt class="col-sm-2">
+            Дата фіскальної операції
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BuyingDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <button type="button" class="btn btn-success" onclick='window.location = "@Url.Action("IndexSeller", "Home")";'>На головну сторінку</button>
+</div>

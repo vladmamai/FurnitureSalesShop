@@ -1,0 +1,43 @@
+﻿@model FurnitureShopApp.DAL.Models.CheckDetails
+
+@{
+    ViewData["Title"] = "Деталі рахунків клієнтів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Деталі рахунку клієнта</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CheckDetailsId" />
+            <div class="form-group">
+                <label asp-for="CheckId" class="control-label">Номер чеку</label>
+                <select asp-for="CheckId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.CheckId"></select>
+                <span asp-validation-for="CheckId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FurnitureId" class="control-label">Ідентифікатор товару</label>
+                <select asp-for="FurnitureId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.FurnitureId"></select>
+                <span asp-validation-for="FurnitureId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantitySelected" class="control-label">Кількість одиниць</label>
+                <input asp-for="QuantitySelected" class="form-control" />
+                <span asp-validation-for="QuantitySelected" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

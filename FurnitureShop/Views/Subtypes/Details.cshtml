@@ -1,0 +1,30 @@
+﻿@model FurnitureShopApp.DAL.Models.Subtype
+
+@{
+    ViewData["Title"] = "Підтипи меблів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Підтип меблів</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Назва
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubtypeName)
+        </dd>
+        <dt class = "col-sm-2">
+            Тип меблів
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type.TypeName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SubtypeId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до спсику</a>
+</div>

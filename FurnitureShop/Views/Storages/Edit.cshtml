@@ -1,0 +1,38 @@
+﻿@model FurnitureShopApp.DAL.Models.Storage
+
+@{
+    ViewData["Title"] = "Список складів";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Склад</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StorageId" />
+            <div class="form-group">
+                <label asp-for="ShopId" class="control-label">Адрес магазину</label>
+                <select asp-for="ShopId" class="form-control selectpicker" data-live-search="true" asp-items="ViewBag.ShopId"></select>
+                <span asp-validation-for="ShopId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StorageAddress" class="control-label">Адрес складу</label>
+                <input asp-for="StorageAddress" class="form-control" />
+                <span asp-validation-for="StorageAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

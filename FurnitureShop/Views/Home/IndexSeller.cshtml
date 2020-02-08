@@ -1,0 +1,10 @@
+﻿@model FurnitureShopApp.DAL.Models.EmployeeUser
+
+@{
+    ViewData["Title"] = "Головна сторінка продавця - консультанта";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+
+<h3 class="text-center">Ласкаво просимо, @Html.DisplayFor(model => model.Employee.EmpFullName)</h3>
+<h3 class="text-center">Ви ввійшли у систему як @Html.DisplayFor(model => model.Employee.Position.PositionName)</h3>
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FurnitureShopApp.DAL.Models.FurnitureBillingDataModel>
+
+@{
+    ViewData["Title"] = "Оформлення замовлення";
+    Layout = "~/Views/Shared/_LayoutSeller.cshtml";
+}
+<div class="container">
+    <div class="d-flex">
+        <div class="col-9">
+            <h1>Оформлення замовлення</h1>
+        </div>
+        <div class="col-3">
+            <p><a asp-action="Create" class="btn btn-warning btn-block border-warning">Додати новий запис</a></p>
+            <p><a asp-action="Details" class="btn btn-outline-success btn-block border-success">Деталі замовлення</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr class="d-flex">
+                        <th class="col-5">
+                            Назва товару
+                        </th>
+                        <th class="col-4">
+                            Кількість одиниць
+                        </th>
+                        <th class="col-3"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="d-flex">
+                            <td class="col-5">
+                                @Html.DisplayFor(modelItem => item.FurnitureName)  (@Html.DisplayFor(modelItem => item.Color))
+                            </td>
+                            <td class="col-4">
+                                @Html.DisplayFor(modelItem => item.QuantitySelected)
+                            </td>
+                            <td class="col-3">
+                                <a asp-action="Edit" asp-route-id="@item.CheckDetailsId" class="btn btn-outline-warning btn-block border-warning">Редагувати</a>
+                                <a asp-action="Delete" asp-route-id="@item.CheckDetailsId" class="btn btn-outline-danger btn-block border-danger">Видалити</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
